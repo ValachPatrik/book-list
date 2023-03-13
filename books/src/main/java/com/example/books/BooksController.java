@@ -10,7 +10,8 @@ public class BooksController {
 
     @GetMapping("/books")
     public List<Book> books(){
-        BookList bookList = new BookList();
-        return bookList.getBookList();
+        return List.of(new Book(1,"fds","fds"),
+        new Book(2,"fds","fds"),
+        new Book(3,"fds","fds"));
     }
 }
