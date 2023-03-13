@@ -1,0 +1,8 @@
+services:
+  book-list:
+    image: 42424242424242424242/bookstore-books
+    ports:
+      - "8080:80"
+    networks:
+      - mynet
+  bo:
