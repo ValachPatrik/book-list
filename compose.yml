@@ -1,0 +1,30 @@
+services:
+  frontend:
+    image: "mrksdh/frontend:latest"
+    ports:
+      - "8080:80"
+    networks:
+      - mynet
+
+  booklist:
+    image: "42424242424242424242/bookstore-books:latest"
+    networks:
+      - mynet
+    expose:
+      - "80"
+
+  details:
+    image: "mrksdh/details:latest"
+    networks:
+      - mynet
+    expose:
+      - "80"
+
+  reviews:
+    image: "mrksdh/reviews:latest"
+    networks:
+      - mynet
+    expose:
+      - "80"
+networks:
+  mynet:
