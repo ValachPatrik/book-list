@@ -1,8 +1,25 @@
 services:
-  book-list:
-    image: 42424242424242424242/bookstore-books
+  front-end:
+    image: "mrksdh/frontend:latest"
     ports:
       - "8080:80"
     networks:
       - mynet
-  bo:
+  book-list:
+    image: 42424242424242424242/bookstore-books:latest
+    expose:
+      - "80"
+    networks:
+      - mynet
+  details:
+    image: "mrksdh/details:latest"
+    expose:
+      - "80"
+    networks:
+      - mynet
+  reviews:
+    image: "mrksdh/reviews:latest"
+    expose:
+      - "80"
+    networks:
+      - mynet
