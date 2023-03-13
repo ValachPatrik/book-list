@@ -1,28 +1,42 @@
 services:
-  front-end:
+  frontend:
     image: "mrksdh/frontend:latest"
     ports:
-      - "8080:80"
+      - "8080:8080"
     networks:
       - mynet
-  
-  book-list:
-    image: 42424242424242424242/bookstore-books:latest
+    environment:
+      - "REVIEW_SERVICE=http://reviews:8080"
+      - "BOOK_SERVICE=http://booklist:8080"
+      - "DETAIL_SERVICE=http://details:8080"
+      - "PORT=8080"
+
+  booklist:
+    image: "42424242424242424242/bookstore-books:latest"
+    networks:
+      - mynet
     expose:
-      - "80"
-    networks:
-      - mynet
-  
+      - "8080"
+    environment:
+      - "PORT=8080"
+
   details:
     image: "mrksdh/details:latest"
-    expose:
-      - "80"
     networks:
       - mynet
-  
+    expose:
+      - "8080"
+    environment:
+      - "PORT=8080"
+
   reviews:
     image: "mrksdh/reviews:latest"
-    expose:
-      - "80"
     networks:
       - mynet
+    expose:
+      - "8080"
+    environment:
+      - "PORT=8080"
+
+networks:
+  mynet:
